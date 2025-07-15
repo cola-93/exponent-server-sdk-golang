@@ -1,9 +1,13 @@
+原仓库主不维护了，只能自己来了，以后欢迎大家来这里提交PR。
+
+目前已经合并了原仓库#27和18#的PR
+
 # expo-server-sdk-go
 Send push notifications to Expo apps using Go
 
 ## Installation
 ```
-go get github.com/oliveroneill/exponent-server-sdk-golang/sdk
+go get github.com/cola-93/exponent-server-sdk-golang/sdk
 ```
 
 ## Usage
@@ -12,7 +16,7 @@ package main
 
 import (
     "fmt"
-    expo "github.com/oliveroneill/exponent-server-sdk-golang/sdk"
+    expo "github.com/cola-93/exponent-server-sdk-golang/sdk"
 )
 
 func main() {
@@ -26,7 +30,7 @@ func main() {
     client := expo.NewPushClient(nil)
 
     // Publish message
-    response, err := client.Publish(
+    responses, err := client.Publish(
         &expo.PushMessage{
             To: []expo.ExponentPushToken{pushToken},
             Body: "This is a test notification",
@@ -43,8 +47,10 @@ func main() {
     }
     
     // Validate responses
-    if response.ValidateResponse() != nil {
-        fmt.Println(response.PushMessage.To, "failed")
+    for _, res := range responses {
+        if res.ValidateResponse() != nil {
+            fmt.Println(res.PushMessage.To, "failed")
+        }
     }
 }
 ```
