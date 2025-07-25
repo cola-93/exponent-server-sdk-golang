@@ -1,6 +1,8 @@
 原仓库主不维护了，只能自己来了，以后欢迎大家来这里提交PR。
 
-目前已经合并了原仓库#27和18#的PR
+目前已经合并了原仓库#27和#18的PR，相比原版：
+修复了 Mismatched response length. Expected 1 receipts but only received 3 报错
+添加了 useFcmV1=true 的请求param参数
 
 # expo-server-sdk-go
 Send push notifications to Expo apps using Go
